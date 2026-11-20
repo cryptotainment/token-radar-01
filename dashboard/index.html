@@ -3,12 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Token Radar: pre-token protocols ranked by implied value</title>
+<title>Token Radar — pre-token protocols, ranked by implied value</title>
 <link rel="stylesheet" href="app.css">
 </head>
 <body>
-<a class="skip" href="#board">Skip to the board</a>
-<main id="board" tabindex="-1" aria-busy="true"></main>
+<header class="top">
+  <div class="brand"><span class="dot" aria-hidden="true"></span>Token Radar</div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1 id="headline"></h1>
+      <p class="lede" id="lede"></p>
+    </div>
+    <dl class="stats" id="stats"></dl>
+  </section>
+
+  <section class="filters" aria-label="Filters">
+    <label class="field field-search">Search
+      <input id="q" type="search" placeholder="Search name, category or chain" autocomplete="off">
+    </label>
+    <label class="field">Category
+      <select id="category"></select>
+    </label>
+    <label class="field">Chain
+      <select id="chain"></select>
+    </label>
+    <label class="field">Min TVL
+      <select id="minTvl">
+        <option value="0">Any TVL</option>
+        <option value="10000000">$10M</option>
+        <option value="50000000">$50M</option>
+        <option value="100000000">$100M</option>
+        <option value="500000000">$500M</option>
+      </select>
+    </label>
+    <fieldset class="field field-status">
+      <legend>Token status</legend>
+      <div class="segmented" role="group" aria-label="Token status">
+        <button type="button" id="statusPre" aria-pressed="true">Pre-token</button>
+        <button type="button" id="statusLive" aria-pressed="false">Live token</button>
+      </div>
+    </fieldset>
+  </section>
+
+  <p class="count" id="count"></p>
+
+  <section class="card">
+    <p class="caption" id="caption"></p>
+    <table id="board">
+      <thead id="boardHead"></thead>
+      <tbody id="boardBody"></tbody>
+    </table>
+  </section>
+</main>
+
+<aside class="dialog" id="dialog" hidden></aside>
+
 <script src="../data.js"></script>
 <script src="app.js"></script>
 </body>
